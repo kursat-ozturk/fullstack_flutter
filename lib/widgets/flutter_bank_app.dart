@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fullstack_flutter/pages/account_registration.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../pages/main_page.dart';
 import '../pages/splash_page.dart';
 
 class FlutterBankApp extends StatelessWidget {
@@ -16,7 +17,7 @@ class FlutterBankApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: FlutterBankSplash(),
+      home: FlutterBankMain(), //FlutterBankSplash(),
     );
   }
 }

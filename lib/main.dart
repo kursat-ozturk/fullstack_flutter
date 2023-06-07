@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fullstack_flutter/models/flutter_bank_service.dart';
 import 'package:fullstack_flutter/models/login_service.dart';
 import 'package:fullstack_flutter/widgets/flutter_bank_app.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,6 +16,9 @@ void main() async {
     providers: [
       ChangeNotifierProvider(
         create: (_) => LoginService(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => FlutterBankService(),
       ),
     ],
     child: FlutterBankApp(),
