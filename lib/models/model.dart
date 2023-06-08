@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fullstack_flutter/models/bottom_bar_item.dart';
 import 'package:fullstack_flutter/models/login_service.dart';
+import 'package:fullstack_flutter/pages/flutter_bank_deposit.dart';
 import 'package:provider/provider.dart';
 
 class Utils {
@@ -84,7 +85,8 @@ class Utils {
         });
   }
 
-  static List<FlutterBankBottomBarItem> getBottomBarItems() {
+  static List<FlutterBankBottomBarItem> getBottomBarItems(
+      BuildContext context) {
     return [
       FlutterBankBottomBarItem(
         label: 'Withdraw',
@@ -94,7 +96,10 @@ class Utils {
       FlutterBankBottomBarItem(
         label: 'Deposit',
         icon: Icons.login,
-        action: () {},
+        action: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => FlutterBankDeposit()));
+        },
       ),
       FlutterBankBottomBarItem(
         label: 'Expenses',

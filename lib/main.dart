@@ -20,6 +20,9 @@ void main() async {
       ChangeNotifierProvider(
         create: (_) => FlutterBankService(),
       ),
+      ChangeNotifierProvider(
+        create: (_) => DepositService(),
+      ),
     ],
     child: FlutterBankApp(),
   ));

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fullstack_flutter/pages/account_registration.dart';
+import 'package:fullstack_flutter/pages/flutter_bank_deposit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../pages/main_page.dart';
@@ -17,7 +18,7 @@ class FlutterBankApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: FlutterBankMain(), //FlutterBankSplash(),
+      home: FlutterBankSplash(), //FlutterBankDeposit(), //FlutterBankMain(),
     );
   }
 }
