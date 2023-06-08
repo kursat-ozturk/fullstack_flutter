@@ -32,7 +32,7 @@ class FlutterBankService extends ChangeNotifier {
 
     FirebaseFirestore.instance
         .collection('accounts')
-        .doc(userId) //'63g1wr4o3iMVL5rHoso1yjFveZh2'
+        .doc(userId)
         .collection('user_accounts')
         .get()
         .then((QuerySnapshot collection) {
