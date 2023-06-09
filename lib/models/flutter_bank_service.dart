@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fullstack_flutter/models/data.dart';
 import 'package:fullstack_flutter/models/login_service.dart';
@@ -79,6 +78,34 @@ class FlutterBankService extends ChangeNotifier {
 
     return depositComplete.future;
   }
+
+  Future<bool> performWithdrawal(BuildContext context) {
+    Completer<bool> withdrawComplete = Completer();
+
+    LoginService loginService =
+        Provider.of<LoginService>(context, listen: false);
+    String userId = loginService.getUserId();
+
+    WithdrawalService wService =
+        Provider.of<WithdrawalService>(context, listen: false);
+    int amountToWithdraw = wService.amountToWithdraw.toInt();
+
+    DocumentReference doc = FirebaseFirestore.instance
+        .collection('accounts')
+        .doc(userId)
+        .collection('user_accounts')
+        .doc(selectedAccount!.id!);
+
+    doc.update({'balance': selectedAccount!.balance! - amountToWithdraw}).then(
+        (value) {
+      wService.resetWithdrawalService();
+      withdrawComplete.complete(true);
+    }, onError: (error) {
+      withdrawComplete.completeError({'error': error});
+    });
+
+    return withdrawComplete.future;
+  }
 }
 
 class DepositService extends ChangeNotifier {
@@ -95,5 +122,23 @@ class DepositService extends ChangeNotifier {
 
   bool checkAmountToDeposit() {
     return amountToDeposit > 0;
+  }
+}
+
+class WithdrawalService extends ChangeNotifier {
+  double amountToWithdraw = 0;
+
+  void setAmountToWithdraw(double amount) {
+    amountToWithdraw = amount;
+    notifyListeners();
+  }
+
+  void resetWithdrawalService() {
+    amountToWithdraw = 0;
+    notifyListeners();
+  }
+
+  bool checkAmountToWithdraw() {
+    return amountToWithdraw > 0;
   }
 }

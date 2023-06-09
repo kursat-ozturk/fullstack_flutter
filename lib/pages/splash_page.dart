@@ -9,11 +9,11 @@ class FlutterBankSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => FlutterBankLogin()));
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const FlutterBankLogin()));
     });
 
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Utils.mainThemeColor,
       body: Stack(
         children: [

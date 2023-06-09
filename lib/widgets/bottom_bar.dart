@@ -41,7 +41,7 @@ class FlutterBankBottomBar extends StatelessWidget {
                   bottomItem.action!();
                 },
                 child: Container(
-                  constraints: BoxConstraints(minWidth: 80),
+                  constraints: const BoxConstraints(minWidth: 80),
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -51,7 +51,7 @@ class FlutterBankBottomBar extends StatelessWidget {
                           color: Utils.mainThemeColor, size: 20),
                       Text(
                         bottomItem.label!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Utils.mainThemeColor, fontSize: 10),
                       ),
                     ],

@@ -7,7 +7,7 @@ class FlutterBankLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: SizedBox(
         width: 80,
         height: 80,

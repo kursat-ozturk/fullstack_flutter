@@ -3,27 +3,21 @@ import 'package:fullstack_flutter/models/flutter_bank_service.dart';
 import 'package:fullstack_flutter/pages/transaction_completion_page.dart';
 import 'package:fullstack_flutter/widgets/account_action_header.dart';
 import 'package:fullstack_flutter/widgets/account_action_selection.dart';
-import 'package:fullstack_flutter/widgets/account_deposit_slider.dart';
 import 'package:fullstack_flutter/widgets/bank_main_button.dart';
+import 'package:fullstack_flutter/widgets/withdrawal_slider.dart';
 import 'package:provider/provider.dart';
 
 import '../models/model.dart';
 
-class FlutterBankDeposit extends StatelessWidget {
-  const FlutterBankDeposit({super.key});
+class FlutterBankWithdrawal extends StatelessWidget {
+  const FlutterBankWithdrawal({super.key});
 
   @override
   Widget build(BuildContext context) {
-    FlutterBankService bankService =
-        Provider.of<FlutterBankService>(context, listen: false);
-
-    Future.delayed(const Duration(seconds: 10), () {
-      bankService.resetSelections();
-      Navigator.of(context).pop();
-    });
-
     return WillPopScope(
       onWillPop: () {
+        FlutterBankService bankService =
+            Provider.of<FlutterBankService>(context, listen: false);
         bankService.resetSelections();
         return Future.value(true);
       },
@@ -43,28 +37,30 @@ class FlutterBankDeposit extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const AccountActionHeader(
-                  headerTitle: 'Deposit', icon: Icons.login),
+                  headerTitle: 'Withdraw', icon: Icons.logout),
               const Expanded(
                 child: AccountActionSelection(
-                  actionTypeLabel: 'To',
-                  amountChanger: AccountDepositSlider(),
+                  actionTypeLabel: 'From',
+                  amountChanger: AccountWithdrawalSlider(),
                 ),
               ),
-              Consumer<DepositService>(
-                builder: (context, service, child) {
+              Consumer<WithdrawalService>(
+                builder: (context, withdrawalService, child) {
                   return FlutterBankMainButton(
-                      enabled: service.checkAmountToDeposit(),
-                      label: 'Make Deposit',
-                      onTap: service.checkAmountToDeposit()
-                          ? () {
-                              Navigator.of(context)
-                                  .pushReplacement(MaterialPageRoute(
+                    enabled: withdrawalService.checkAmountToWithdraw(),
+                    label: 'Make Withdrawal',
+                    onTap: withdrawalService.checkAmountToWithdraw()
+                        ? () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
                                 builder: (context) =>
                                     const TransactionCompletionPage(
-                                        isDeposit: true),
-                              ));
-                            }
-                          : null);
+                                        isDeposit: false),
+                              ),
+                            );
+                          }
+                        : null,
+                  );
                 },
               ),
             ],

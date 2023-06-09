@@ -31,15 +31,17 @@ class TransactionCompletionPage extends StatelessWidget {
       ),
       body: Center(
         child: FutureBuilder(
-          future: bankService.performDeposit(context),
+          future: isDeposit!
+              ? bankService.performDeposit(context)
+              : bankService.performWithdrawal(context),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return FlutterBankLoading();
+              return const FlutterBankLoading();
             }
             if (snapshot.hasError) {
-              return FlutterBankError();
+              return const FlutterBankError();
             }
-            return FlutterBankTransactionCompleted();
+            return const FlutterBankTransactionCompleted();
           },
         ),
       ),

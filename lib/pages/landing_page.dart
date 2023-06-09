@@ -185,7 +185,7 @@ class _FlutterBankLoginState extends State<FlutterBankLogin> {
                   usernameController.clear();
                   passwordController.clear();
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => FlutterBankMain()));
+                      builder: (context) => const FlutterBankMain()));
                 }
               },
             ),
@@ -195,7 +195,7 @@ class _FlutterBankLoginState extends State<FlutterBankLogin> {
               icon: Icons.account_circle,
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => FlutterAccountRegistration()));
+                    builder: (context) => const FlutterAccountRegistration()));
               },
               backgroundColor: Colors.green,
               iconColor: Colors.white,

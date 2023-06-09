@@ -22,11 +22,11 @@ class AccountActionSelection extends StatelessWidget {
           future: service.getAccounts(context),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return FlutterBankLoading();
+              return const FlutterBankLoading();
             }
 
             if (snapshot.hasError) {
-              return FlutterBankError();
+              return const FlutterBankError();
             }
 
             var selectedAccount = service.getSelectedAccount();
@@ -37,7 +37,7 @@ class AccountActionSelection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(actionTypeLabel!,
-                    style: TextStyle(color: Colors.grey, fontSize: 15)),
+                    style: const TextStyle(color: Colors.grey, fontSize: 15)),
                 const SizedBox(height: 10),
                 AccountActionCard(
                   selectedAccount: selectedAccount,
@@ -52,9 +52,9 @@ class AccountActionSelection extends StatelessWidget {
                       children: [
                         Container(
                           margin: const EdgeInsets.only(top: 30),
-                          child: Text(
+                          child: const Text(
                             'Current Balance',
-                            style: const TextStyle(color: Colors.grey),
+                            style: TextStyle(color: Colors.grey),
                           ),
                         ),
                         Row(
@@ -67,9 +67,7 @@ class AccountActionSelection extends StatelessWidget {
                             ),
                             Text(
                               selectedAccount != null
-                                  ? '\$' +
-                                      selectedAccount.balance!
-                                          .toStringAsFixed(2)
+                                  ? '\$${selectedAccount.balance!.toStringAsFixed(2)}'
                                   : '',
                               style: const TextStyle(
                                   color: Colors.black, fontSize: 35),

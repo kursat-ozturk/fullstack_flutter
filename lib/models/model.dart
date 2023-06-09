@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fullstack_flutter/models/bottom_bar_item.dart';
 import 'package:fullstack_flutter/models/login_service.dart';
 import 'package:fullstack_flutter/pages/flutter_bank_deposit.dart';
+import 'package:fullstack_flutter/pages/withdrawal.dart';
 import 'package:provider/provider.dart';
 
 class Utils {
@@ -42,7 +43,7 @@ class Utils {
           enabledBorder: InputBorder.none,
           errorBorder: InputBorder.none,
           disabledBorder: InputBorder.none,
-          contentPadding: EdgeInsets.only(
+          contentPadding: const EdgeInsets.only(
             left: 15,
             bottom: 11,
             top: 11,
@@ -91,14 +92,17 @@ class Utils {
       FlutterBankBottomBarItem(
         label: 'Withdraw',
         icon: Icons.logout,
-        action: () {},
+        action: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const FlutterBankWithdrawal()));
+        },
       ),
       FlutterBankBottomBarItem(
         label: 'Deposit',
         icon: Icons.login,
         action: () {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => FlutterBankDeposit()));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const FlutterBankDeposit()));
         },
       ),
       FlutterBankBottomBarItem(

@@ -16,7 +16,7 @@ class FlutterBankMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(child: FlutterBankDrawer()),
+      drawer: const Drawer(child: FlutterBankDrawer()),
       appBar: AppBar(
         elevation: 0,
         iconTheme: const IconThemeData(color: Utils.mainThemeColor),
@@ -28,7 +28,7 @@ class FlutterBankMain extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Row(
+            const Row(
               children: [
                 Icon(
                   Icons.account_balance_wallet,
@@ -51,12 +51,12 @@ class FlutterBankMain extends StatelessWidget {
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.connectionState != ConnectionState.done ||
                           !snapshot.hasData) {
-                        return FlutterBankLoading();
+                        return const FlutterBankLoading();
                       }
 
                       List<Account> accounts = snapshot.data as List<Account>;
                       if (accounts.isEmpty) {
-                        return Center(
+                        return const Center(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +88,7 @@ class FlutterBankMain extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: FlutterBankBottomBar(),
+      bottomNavigationBar: const FlutterBankBottomBar(),
     );
   }
 }
