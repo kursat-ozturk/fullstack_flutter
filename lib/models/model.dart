@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fullstack_flutter/models/bottom_bar_item.dart';
 import 'package:fullstack_flutter/models/login_service.dart';
 import 'package:fullstack_flutter/pages/flutter_bank_deposit.dart';
+import 'package:fullstack_flutter/pages/flutter_bank_expenses.dart';
 import 'package:fullstack_flutter/pages/withdrawal.dart';
 import 'package:provider/provider.dart';
 
@@ -108,7 +109,10 @@ class Utils {
       FlutterBankBottomBarItem(
         label: 'Expenses',
         icon: Icons.payments,
-        action: () {},
+        action: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => FlutterBankExpenses()));
+        },
       ),
     ];
   }
