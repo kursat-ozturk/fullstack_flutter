@@ -1,16 +1,21 @@
 # fullstack_flutter
 
-A new Flutter project.
+## Roman Just Codes Flutter Codelabs Project 5
 
-## Getting Started
+### I built in this Workshop:
+- A well-architected full-stack Flutter Application for a fictitious banking institution (Flutter Savings Bank), consisting of the following screens:
+- Splash Page, Login Page, Registration Page, Landing Page, Withdrawal Page, Deposit Page, Expenses Page.
 
-This project is a starting point for a Flutter application.
+### I added the following features by implementing a serverless backend powered by Firebase:
+- Firebase Authentication
+- Creation of new accounts
+- Pull data from Firebase Cloud Firestore
+- Implementing real time
+- Add / Update / Delete functionality
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### I also used about the following:
+- Create Flutter User interfaces with ease
+- Common Flutter Loyout strategies using just core widgets
+- Creating custom Flutter widgets and achieve widget composition
+- Using Material Icon fonts
+- State Management using Provider to decouple Business Logic of Components (BLoC)
